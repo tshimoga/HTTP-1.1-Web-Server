@@ -1,0 +1,30 @@
+
+Author
+-------------------------------------------------
+Name: Tarun Shimoga
+ASU ID: tshimoga
+ASU #: 1208478709
+
+
+Description
+------------------------------------------------
+
+This is a java application that behaves as a web server. It will accept commands in the form /exec/<command> and give the ouput on the stdout. If the command could not be executed, it'll print the stderr of the execution on stdout. If the command is of any other form, it throws a 404 Not Found message. 
+
+There are 4 class files each serving specific purpose and responsibilities:
+
+1. NormalWebServer: This class is the driver class which has the main class. It takes as input the port number, binds itself and returns a ServerSocket instance. It is also responsible for reading and writing from the input/output stream respectively. It extends Runnable and hence can operate in multithreaded mode.
+If at any time a SIGINT command is sent to the application, this class is responsible for safe termination and release of the port.
+
+2. Protocol: This class is responsible for taking raw input and creating request and response objects. It also executes the command given in the URL after validating the request. 
+
+3. Request: This class represents a valid http request with headers.
+
+4. Response: This class represents a valid http response with headers and request body.
+
+Execution
+-----------------------------------------------
+Follow the steps for execution:
+1. Keep all the 7 files (manifest, Makefile, normal_web_server, NormalWebServer.java, Protocol.java, Request.java, Response.java) in the same location.
+2. Run make (requires open-jdk7-jdk)
+3. Execute ./normal_web_server (requires open-jdk7-jre)
